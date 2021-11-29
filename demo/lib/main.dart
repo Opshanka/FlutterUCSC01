@@ -72,8 +72,9 @@ class _MyHomePageState extends State<MyHomePage> {
       children : [
         ElevatedButton(
           onPressed: ()=> {
-            Navigator.pushNamed(context, "firspage"),
-          }, child: Text("First page"),
+            Navigator.pushNamed(context, "/firstpage"),
+          }, 
+          child: Text("First page"),
         )
       ]
     ),
