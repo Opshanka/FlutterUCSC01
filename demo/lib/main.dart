@@ -1,4 +1,6 @@
+import 'package:demo/common/route_generator.dart';
 import 'package:demo/views/first_page.dart';
+import 'package:demo/views/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,58 +28,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
-        routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        '/' : (context) => const MyHomePage(title: "First Screen"),
-        '/firstpage': (context) => const FirstPage(title:"First Screen Test"),
-        // When navigating to the "/second" route, build the SecondScreen widget.
-      },
-      
-    
+      onGenerateRoute: RouteGenerator.generateRoute,
+      // onGenerateRoute: RouteGenerator.gener,
+      home: Home(title: "Home Page"),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-  return Scaffold(
-    body: Column(
-      children : [
-        ElevatedButton(
-          onPressed: ()=> {
-            Navigator.pushNamed(context, "/firstpage"),
-          }, 
-          child: Text("First page"),
-        )
-      ]
-    ),
-  );
   }
 }
