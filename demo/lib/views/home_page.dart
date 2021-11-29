@@ -2,6 +2,7 @@ import 'package:demo/common/arguments.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
+  final title;
   const Home({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -13,7 +14,6 @@ class Home extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final title;
 
   @override
   State<Home> createState() => _HomeState();
@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title.toString()),
+        title: Text("Home Page"),
       ),
       body: Center(
         child: Column(

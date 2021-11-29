@@ -26,11 +26,6 @@ class RouteGenerator{
           return MaterialPageRoute(builder: (_)=> Users(users: args,));
         }
         return _errorRoute("User List Data Error");
-      case '/home':
-        if(args is ToHomePageArguments){
-          return MaterialPageRoute(builder: (_)=> Home(title: args,));
-        }
-        return _errorRoute("Home Data Error");
        default:
         return _errorRoute("No page Found");
     }

@@ -34,8 +34,7 @@ class _UserProfileState extends State<UserProfile> {
               onPressed: () => {
                 Navigator.pushNamed(
                   context,
-                  "/home",
-                  arguments: ToHomePageArguments(title: "From user profile",),
+                  "/",
                 ),
               },
               child: Text("To Home"),

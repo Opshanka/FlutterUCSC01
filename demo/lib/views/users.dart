@@ -29,8 +29,7 @@ class _UsersState extends State<Users> {
               onPressed: () => {
                 Navigator.pushNamed(
                   context,
-                  "/home",
-                  arguments: ToHomePageArguments(title: "From users",),
+                  "/",
                 ),
               },
               child: Text("To Home"),
