@@ -23,5 +23,4 @@ ThemeData primaryTheme = ThemeData(
   ),
   appBarTheme: AppBarTheme(
     backgroundColor: HexColor.fromHex("#4caf50"),
-  )
-);
+),);
