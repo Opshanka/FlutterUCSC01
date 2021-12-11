@@ -1,4 +1,5 @@
 import 'package:demo/common/arguments.dart';
+import 'package:demo/common/theme.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -32,6 +33,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home Page"),
+        backgroundColor: primaryTheme.primaryColor,
       ),
       body: Center(
         child: Column(
