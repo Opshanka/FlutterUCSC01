@@ -23,7 +23,7 @@ class RouteGenerator{
         return _errorRoute("Profile Data Error");
       case '/users':
         if(args is ToUserListPageArguments){
-          return MaterialPageRoute(builder: (_)=> Users(users: args,));
+          return MaterialPageRoute(builder: (_)=> UsersPage());
         }
         return _errorRoute("User List Data Error");
        default:
