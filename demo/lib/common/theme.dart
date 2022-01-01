@@ -23,4 +23,21 @@ ThemeData primaryTheme = ThemeData(
   ),
   appBarTheme: AppBarTheme(
     backgroundColor: HexColor.fromHex("#4caf50"),
-),);
+    textTheme: TextTheme(
+       headline4: TextStyle(
+          fontFamily: 'Lato',
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+    ),
+),
+  textTheme: const TextTheme(
+    headline4: TextStyle(
+      fontFamily: 'Lato',
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
+  ),
+);
