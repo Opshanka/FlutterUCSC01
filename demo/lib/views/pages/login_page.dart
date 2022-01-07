@@ -1,3 +1,5 @@
+import 'package:demo/common/utilities.dart';
+import 'package:demo/network/webservices.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:demo/widgets/form_items.dart';
@@ -69,6 +71,7 @@ class _LoginPageState extends State<LoginPage> with ValidationMixin {
                         Container(
                           alignment: Alignment.centerLeft,
                           child: formLabel('labels.email'.tr(), context),
+                          margin: EdgeInsets.only(bottom: 20.0),
                         ),
                         Container(
                             height: height / 18,
@@ -80,6 +83,7 @@ class _LoginPageState extends State<LoginPage> with ValidationMixin {
                           padding: EdgeInsets.only(top: 15),
                           alignment: Alignment.centerLeft,
                           child: formLabel('labels.password'.tr(), context),
+                           margin: EdgeInsets.only(bottom: 20.0),
                         ),
                         Container(
                             height: height / 18,
@@ -92,6 +96,9 @@ class _LoginPageState extends State<LoginPage> with ValidationMixin {
                           padding: EdgeInsets.only(top: 50),
                           child: submitButton('buttonTitles.login'.tr(), () {
                             formKey.currentState!.save();
+                             if (formKey.currentState!.validate()) {
+                              logUser(context, email, password);
+                            }
                           }, width - 70, height / 20, context),
                         ),
                       ])),
@@ -100,5 +107,14 @@ class _LoginPageState extends State<LoginPage> with ValidationMixin {
         ),
       ]),
     );
+  }
+
+   void logUser(context, username, password) async {
+    var res = await login(context, username, password);
+    if (res != null) {
+      Utilities.saveToken(res.accessToken);
+      var token = await Utilities.userToken();
+      token != null? Navigator.pushReplacementNamed(context, '/home') : Navigator.pushReplacementNamed(context, '/login');
+    }
   }
 }

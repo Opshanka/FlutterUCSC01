@@ -2,6 +2,7 @@
 import 'package:demo/common/arguments.dart';
 import 'package:demo/views/first_page.dart';
 import 'package:demo/views/home_page.dart';
+import 'package:demo/views/pages/login_page.dart';
 import 'package:demo/views/user.dart';
 import 'package:demo/views/users.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,9 +14,13 @@ class RouteGenerator{
 
     switch(settings.name){
       case '/':
-        return MaterialPageRoute(builder: (_) => Home(title: "HomePage"));
+        return MaterialPageRoute(builder: (_) => const Home(title: "HomePage"));
       case '/firspage':
-        return MaterialPageRoute(builder: (_)=> FirstPage(title: "FirstPage"));
+        return MaterialPageRoute(builder: (_)=> const FirstPage(title: "FirstPage"));
+      case '/login':
+        return MaterialPageRoute(builder: (_) => LoginPage());
+      case '/home':
+        return MaterialPageRoute(builder: (_) => const Home(title: "HomePage"));
       case '/userprofile':
         if(args is ToUserProfilePageArguments){
           return MaterialPageRoute(builder: (_)=> UserProfile(user: args,));
