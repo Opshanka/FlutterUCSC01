@@ -4,10 +4,9 @@ import 'package:demo/common/globals.dart' as global;
 Container industryItem(BuildContext context, industry) {
   double width = MediaQuery.of(context).size.width;
   double height = MediaQuery.of(context).size.height;
-  print(industry.id);
   return Container(
     height: height / 6,
-    margin: EdgeInsets.only(top: 15, left: 15, right: 15),
+    margin: const EdgeInsets.only(top: 15, left: 15, right: 15),
     child: Card(
       child: GestureDetector(
         onTap: () {
@@ -26,7 +25,7 @@ Container industryItem(BuildContext context, industry) {
           Column(
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(left: 15, top: 15),
+                margin: const EdgeInsets.only(left: 15, top: 15),
                 width: width * 2 / 3 - 55,
                 height: (height / 6 - 40) / 2,
                 child: Text(
@@ -36,7 +35,7 @@ Container industryItem(BuildContext context, industry) {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(left: 15, top: 5),
+                margin: const EdgeInsets.only(left: 15, top: 5),
                 height: (height / 6 - 40) / 2,
                 width: width * 2 / 3 - 55,
                 child: Text(
@@ -50,8 +49,8 @@ Container industryItem(BuildContext context, industry) {
         ]),
       ),
     ),
-    decoration: new BoxDecoration(boxShadow: [
-      new BoxShadow(
+    decoration: BoxDecoration(boxShadow: [
+       BoxShadow(
         color: Colors.black.withOpacity(0.1),
         blurRadius: 5.0,
       ),

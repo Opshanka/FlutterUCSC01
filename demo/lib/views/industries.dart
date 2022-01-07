@@ -35,10 +35,9 @@ late List<Industry> industries;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appBar("titles.users".tr(), context),
+        appBar: appBar("titles.industries".tr(), context),
         body: ListView.separated(
             itemBuilder: (BuildContext context, index) {
-              // print(stories[index]);
               return industryItem(context, industries[index]);
             },
             separatorBuilder: (BuildContext context, index) {
