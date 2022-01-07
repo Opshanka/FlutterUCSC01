@@ -37,7 +37,13 @@ ThemeData primaryTheme = ThemeData(
       fontFamily: 'Lato',
       fontSize: 18,
       fontWeight: FontWeight.bold,
-      color: Colors.white,
+      color: Colors.black,
+    ),
+  bodyText1:TextStyle(
+      fontFamily: 'Lato',
+      fontSize: 12,
+      fontWeight: FontWeight.normal,
+      color: Colors.black,
     ),
   ),
 );

@@ -13,4 +13,11 @@ class Utilities {
     var token = prefs.getString('authToken');
     return token;
   }
+
+ static Future<bool> clearPreferences() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    await preferences.clear();
+    return true;
+  }
+
 }

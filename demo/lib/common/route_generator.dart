@@ -2,7 +2,7 @@
 import 'package:demo/common/arguments.dart';
 import 'package:demo/views/first_page.dart';
 import 'package:demo/views/home_page.dart';
-import 'package:demo/views/pages/login_page.dart';
+import 'package:demo/views/login_page.dart';
 import 'package:demo/views/user.dart';
 import 'package:demo/views/users.dart';
 import 'package:flutter/cupertino.dart';
