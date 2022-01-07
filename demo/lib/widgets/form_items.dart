@@ -9,12 +9,11 @@ Widget formLabel(text, context) {
 
 Widget emailField(validateEmail, onSaved, context) {
   return Material(
-      elevation: 5.0,
       shadowColor: Colors.black,
       child: TextFormField(
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 5),
+            contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
             focusedBorder: OutlineInputBorder(
               borderSide:
                   BorderSide(color: Theme.of(context).hintColor, width: 1.0),
@@ -35,7 +34,6 @@ Widget emailField(validateEmail, onSaved, context) {
 Widget passwordField(validatePassword, onSaved, context, obscureText,
     [txtControl]) {
   return Material(
-      elevation: 5.0,
       shadowColor: Colors.black,
       child: TextFormField(
           controller: txtControl,
