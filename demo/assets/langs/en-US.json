@@ -15,5 +15,13 @@
         "password" : "Password",
         "industry_id" : "Industry Id"
         
+    },
+    "drawer": {
+        "home" : "Home",
+        "industries" : "Industries",
+        "users" : "Users",
+        "add_user" : "Add User",
+        "title" : "Flutter Project",
+        "logout" : "Logout"
     }
 }

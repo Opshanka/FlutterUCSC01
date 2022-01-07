@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-      home: IndustriesPage(),
+      home: LoginPage(),
     );
   }
 }

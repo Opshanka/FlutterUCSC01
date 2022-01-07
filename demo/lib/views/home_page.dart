@@ -1,6 +1,7 @@
 import 'package:demo/common/arguments.dart';
 import 'package:demo/common/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:demo/widgets/drawer.dart';
 
 class Home extends StatefulWidget {
   final title;
@@ -23,6 +24,7 @@ class _HomeState extends State<Home> {
         title: Text("Home Page"),
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       ),
+        drawer: navDrawer(context),
       body: const Center(
         child: Text("Home Page"),
       )
