@@ -1,4 +1,6 @@
 import 'package:connectivity/connectivity.dart';
+import 'package:demo/common/utilities.dart';
+import 'package:demo/models/industry_res.dart';
 import 'package:demo/models/login_res.dart';
 import 'package:demo/models/post.dart';
 import 'package:demo/models/post_res.dart';
@@ -36,6 +38,44 @@ Future<LoginResponse?> login(BuildContext context, username, password) async {
       }
     } catch (e) {
       showFloatingFlushbar(context, 'errors.login'.tr());
+      return null;
+    }
+  } else {
+    showFloatingFlushbar(context, 'errors.network'.tr());
+    return null;
+  }
+}
+
+Future<IndustryResponse?> getIndustries(BuildContext context) async {
+  var connectivityResult = await (Connectivity().checkConnectivity());
+  var token = await Utilities.userToken();
+
+  if ((connectivityResult == ConnectivityResult.mobile) ||
+      (connectivityResult == ConnectivityResult.wifi)) {
+    try {
+      showLoader(context);
+        var url = Uri.parse(global.INDUSTRIES);
+      final http.Response response =
+          await http.get(url, headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      });
+      var responseBody = json.decode(response.body);
+      stopLoader(context);
+      if (response.statusCode == 200) {
+        return IndustryResponse.fromJson(responseBody);
+      } else if (response.statusCode == 403) {
+        showFloatingFlushbar(context, 'errors.industries'.tr());
+        var isDelete = await Utilities.clearPreferences();
+        Navigator.pushReplacementNamed(context, '/login');
+        return null;
+      } else {
+        showFloatingFlushbar(context, 'errors.industries'.tr());
+        return null;
+      }
+    } catch (e) {
+      print(e);
+      showFloatingFlushbar(context, 'errors.unknown'.tr());
       return null;
     }
   } else {

@@ -2,7 +2,9 @@
     "titles": {
         "home" : "Home",
         "login" : "Login",
-        "first" : "First Screen"
+        "first" : "First Screen",
+        "users" : "Users",
+        "industries" : "Industries"
     },
     "buttonTitles": {
         "login" : "Login"
@@ -10,7 +12,8 @@
     },
     "labels": {
         "email" : "Email",
-        "password" : "Password"
+        "password" : "Password",
+        "industry_id" : "Industry Id"
         
     }
 }

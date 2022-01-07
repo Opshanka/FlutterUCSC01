@@ -2,7 +2,8 @@ import 'package:demo/common/route_generator.dart';
 import 'package:demo/common/theme.dart';
 import 'package:demo/views/first_page.dart';
 import 'package:demo/views/home_page.dart';
-import 'package:demo/views/pages/login_page.dart';
+import 'package:demo/views/industries.dart';
+import 'package:demo/views/login_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-      home: LoginPage(),
+      home: IndustriesPage(),
     );
   }
 }
