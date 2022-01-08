@@ -1,3 +1,4 @@
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Utilities {
@@ -18,6 +19,13 @@ class Utilities {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     await preferences.clear();
     return true;
+  }
+
+  static void reportError(ex, stackTr) async {
+    await Sentry.captureException(
+      ex,
+      stackTrace: stackTr,
+    );
   }
 
 }

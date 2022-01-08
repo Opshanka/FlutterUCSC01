@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:another_flushbar/flushbar.dart';
 
-Future<void> showFloatingFlushbar(BuildContext context, message) async {
+Future<void> showFloatingFlushbar(BuildContext context, message, error) async {
   double height = MediaQuery.of(context).size.height;
      await Flushbar(
        padding:const EdgeInsets.all(10),

@@ -30,18 +30,18 @@ Future<LoginResponse?> login(BuildContext context, username, password) async {
         return LoginResponse.fromJson(responseBody);
       } else if (response.statusCode == 400) {
         String message = responseBody['error'];
-        showFloatingFlushbar(context, message);
+        showFloatingFlushbar(context, message, "");
         return null;
       } else {
-        showFloatingFlushbar(context, 'errors.login'.tr());
+        showFloatingFlushbar(context, 'errors.login'.tr(),"");
         return null;
       }
     } catch (e) {
-      showFloatingFlushbar(context, 'errors.login'.tr());
+      showFloatingFlushbar(context, 'errors.login'.tr(),"");
       return null;
     }
   } else {
-    showFloatingFlushbar(context, 'errors.network'.tr());
+    showFloatingFlushbar(context, 'errors.network'.tr(),"");
     return null;
   }
 }
@@ -65,21 +65,21 @@ Future<IndustryResponse?> getIndustries(BuildContext context) async {
       if (response.statusCode == 200) {
         return IndustryResponse.fromJson(responseBody);
       } else if (response.statusCode == 403) {
-        showFloatingFlushbar(context, 'errors.industries'.tr());
+        showFloatingFlushbar(context, 'errors.industries'.tr(),"");
         var isDelete = await Utilities.clearPreferences();
         Navigator.pushReplacementNamed(context, '/login');
         return null;
       } else {
-        showFloatingFlushbar(context, 'errors.industries'.tr());
+        showFloatingFlushbar(context, 'errors.industries'.tr(),"");
         return null;
       }
     } catch (e) {
       print(e);
-      showFloatingFlushbar(context, 'errors.unknown'.tr());
+      showFloatingFlushbar(context, 'errors.unknown'.tr(),"");
       return null;
     }
   } else {
-    showFloatingFlushbar(context, 'errors.network'.tr());
+    showFloatingFlushbar(context, 'errors.network'.tr(),"");
     return null;
   }
 }
@@ -200,18 +200,18 @@ Future<PostsResponse> getPosts(BuildContext context) async {
       if (response.statusCode == 200) {
         return PostsResponse.fromJson(responseBody);
       } else if (response.statusCode == 403) {
-        print("Unauthorized");
-        return PostsResponse(posts: new List<Post>.empty());
+        
+        return PostsResponse(posts:  List<Post>.empty());
       } else {
-        print("Error");
-        return PostsResponse(posts: new List<Post>.empty());
+        
+        return PostsResponse(posts:  List<Post>.empty());
       }
     } catch (e) {
-      print(e);
-      return PostsResponse(posts: new List<Post>.empty());
+      
+      return PostsResponse(posts:  List<Post>.empty());
     }
   } else {
-    return PostsResponse(posts: new List<Post>.empty());
+    return PostsResponse(posts:  List<Post>.empty());
   }
 }
 
@@ -241,6 +241,39 @@ Future<bool?> deletePost(BuildContext context, int id) async {
     }
   } else {
     //we don't have connection, we can give error alert as No network
+    return false;
+  }
+}
+
+Future<bool> logout(BuildContext context) async {
+  var connectivityResult = await (Connectivity().checkConnectivity());
+  var token = await Utilities.userToken(); //use secured storage package in flutter to save token
+
+  if ((connectivityResult == ConnectivityResult.mobile) ||
+      (connectivityResult == ConnectivityResult.wifi)) {
+    try {
+      showLoader(context);
+       var url = Uri.parse(global.USER);
+      final http.Response response = await http.get(url, headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      });
+      stopLoader(context);
+      if (response.statusCode == 200 || response.statusCode == 403) {
+        var isDelete = await Utilities.clearPreferences();
+        Navigator.pushReplacementNamed(context, '/login');
+        return true;
+      } else {
+        showFloatingFlushbar(context, 'errors.industries'.tr(), true);
+        return false;
+      }
+    } catch (e, stackTrace) {
+      Utilities.reportError(e, stackTrace);
+      showFloatingFlushbar(context, 'errors.unknown'.tr(), true);
+      return false;
+    }
+  } else {
+    showFloatingFlushbar(context, 'errors.network'.tr(), true);
     return false;
   }
 }

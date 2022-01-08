@@ -2,6 +2,7 @@
 import 'package:demo/common/arguments.dart';
 import 'package:demo/views/first_page.dart';
 import 'package:demo/views/home_page.dart';
+import 'package:demo/views/industries.dart';
 import 'package:demo/views/login_page.dart';
 import 'package:demo/views/user.dart';
 import 'package:demo/views/users.dart';
@@ -21,6 +22,8 @@ class RouteGenerator{
         return MaterialPageRoute(builder: (_) => LoginPage());
       case '/home':
         return MaterialPageRoute(builder: (_) => const Home(title: "HomePage"));
+      case '/industries':
+        return MaterialPageRoute(builder: (_) => const IndustriesPage());
       case '/userprofile':
         if(args is ToUserProfilePageArguments){
           return MaterialPageRoute(builder: (_)=> UserProfile(user: args,));

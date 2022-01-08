@@ -1,5 +1,6 @@
 import 'package:demo/common/route_generator.dart';
 import 'package:demo/common/theme.dart';
+import 'package:demo/common/utilities.dart';
 import 'package:demo/views/first_page.dart';
 import 'package:demo/views/home_page.dart';
 import 'package:demo/views/industries.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  var token = await Utilities.userToken();
   await EasyLocalization.ensureInitialized();
   
   runApp(
@@ -16,13 +18,16 @@ Future<void> main() async {
       supportedLocales: [const Locale('en', 'US'), Locale('de', 'DE')],
       path: 'assets/langs', // <-- change the path of the translation files 
       fallbackLocale: Locale('en', 'US'),
-      child: MyApp()
+      child: MyApp(
+        token: token,
+      )
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final String? token;
+  const MyApp({Key? key, this.token}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -37,7 +42,7 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-      home: LoginPage(),
+      home:token != null ? const Home(title: "HomePage") : LoginPage(),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:demo/models/industry.dart';
 import 'package:demo/network/webservices.dart';
 import 'package:demo/views/cards/industry_card.dart';
 import 'package:demo/widgets/appbar.dart';
+import 'package:demo/widgets/drawer.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +37,7 @@ late List<Industry> industries;
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: appBar("titles.industries".tr(), context),
+        drawer: navDrawer(context),
         body: ListView.separated(
             itemBuilder: (BuildContext context, index) {
               return industryItem(context, industries[index]);
