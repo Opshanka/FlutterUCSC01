@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-      home:token != null ? const Home(title: "HomePage") : LoginPage(),
+     home:token != null ? const Home(title: "HomePage") : LoginPage(),
     );
   }
 }
